@@ -63,6 +63,12 @@ body {
     background: silver;
     cursor: pointer;
 }
+.copy, .tip {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
 .expression {
     width: 86%;
     height: 15rem;
