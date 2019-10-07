@@ -3,9 +3,12 @@ html {
 }
 body {
     background-image: linear-gradient(-60deg, #686DE0, #28D988);
-    /* background-attachment: fixed; */
     background-repeat: no-repeat;
 }
+.github-btns {
+    text-align: right;
+}
+
 .title {
     text-shadow: 0 0rem 1.5rem lime;
     text-align: center;
