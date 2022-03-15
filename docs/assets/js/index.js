@@ -5,8 +5,7 @@ let exp = document.querySelector('.expression');
 let result = document.querySelector('.result-msg');
 let clickable = true;
 
-// 开始转换
-convertBtn.onclick = function() {
+function startConvert() {
     let inputText = input.value.trim();
 
     if (inputText) {
@@ -15,6 +14,13 @@ convertBtn.onclick = function() {
     }
     input.value = '';
 }
+
+// 开始转换
+convertBtn.onclick = startConvert;
+input.onkeydown = function(evt) {
+    if(evt.key === 'Enter') startConvert();
+}
+
 // 选中并复制代码
 copyBtn.onclick = function() {
     if (clickable) {
