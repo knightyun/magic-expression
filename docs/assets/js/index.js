@@ -1,34 +1,33 @@
-let input = document.querySelector('.input');
-let convertBtn = document.querySelector('.convert');
-let copyBtn = document.querySelector('.copy');
-let exp = document.querySelector('.expression');
-let result = document.querySelector('.result-msg');
+const convertInput = document.querySelector('.convert-input');
+const convertBtn = document.querySelector('.convert');
+const encryptBtn = document.querySelector('.encrypt');
+const copyBtn = document.querySelector('.copy');
+const exp = document.querySelector('.expression');
+const result = document.querySelector('.result-msg');
 let clickable = true;
 
-function startConvert() {
-    let inputText = input.value.trim();
+function startConvert(isJs = false) {
+    const inputText = convertInput.value.trim();
 
     if (inputText) {
-        exp.innerText = magicExpression(inputText);
+        exp.innerText = magicExpression(inputText, isJs);
         result.innerText = '"' + inputText + '"';
     }
-    input.value = '';
+    convertInput.value = '';
 }
 
 // 开始转换
-convertBtn.onclick = startConvert;
-input.onkeydown = function(evt) {
-    if(evt.key === 'Enter') startConvert();
-}
+convertBtn.onclick = function() { startConvert(); };
+encryptBtn.onclick = function() { startConvert(true); };
 
 // 选中并复制代码
 copyBtn.onclick = function() {
     if (clickable) {
         clickable = false;
-        let that = this;
-        let tmp = that.innerText;
-        let range = document.createRange();
-        let sel = getSelection();
+        const that = this;
+        const tmp = that.innerText;
+        const range = document.createRange();
+        const sel = getSelection();
     
         range.selectNode(exp);
         sel.removeAllRanges();

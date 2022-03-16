@@ -1,6 +1,73 @@
-function magicExpression(str) {
-    // 生成字符的表达式的数组
-    let charExps = {
+/**
+ * 主函数
+ * @param {string} str - 要转换的字符串
+ * @param {boolean} isJs - 是否为js加密
+ * @returns {string}
+ */
+function magicExpression(str, isJs = false) {
+    // const charUniCodes = []; // 保存每个字符的 Unicode 符
+
+    // 构造 "[]['constructor']['constructor']('return '+'"'+'\\uxxxx'+'"')()" 字符串
+    const _constructor =
+        toExp('c') + '+' +
+        toExp('o') + '+' +
+        toExp('n') + '+' +
+        toExp('s') + '+' +
+        toExp('t') + '+' +
+        toExp('r') + '+' +
+        toExp('u') + '+' +
+        toExp('c') + '+' +
+        toExp('t') + '+' +
+        toExp('o') + '+' +
+        toExp('r');
+
+    const _return =
+        toExp('r') + '+' +
+        toExp('e') + '+' +
+        toExp('t') + '+' +
+        toExp('u') + '+' +
+        toExp('r') + '+' +
+        toExp('n') + '+' +
+        toExp(' ');
+
+    const resultBody = str.split('').map(function(s) { return toExp(s); });
+
+    const result = '[][' + _constructor + '][' + _constructor + '](' + _return + '+\'"\'+' + resultBody.join('+') + '+\'"\')()';
+    const encryptedJs = '[][' + _constructor + '][' + _constructor + '](' + result + ')()';
+
+    return isJs ? encryptedJs : result;
+}
+
+/**
+ * 十六进制数字字符转换为 Unicode 符格式
+ * @param {string} hexCode 
+ * @returns {string}
+ */
+function toUnicode(hexCode) {
+    switch (hexCode.length) {
+        case 4:
+            break;
+        case 3:
+            hexCode = '0' + hexCode;
+            break;
+        case 2:
+            hexCode = '00' + hexCode;
+            break;
+        case 1:
+            hexCode = '000' + hexCode;
+            break;
+    }
+    return '\\u' + hexCode;
+}
+
+/**
+ * 单个字符转换
+ * @param {string} char 
+ * @returns {string}
+ */
+function toExp(char) {
+    // 已知的表达式映射 - 待完善
+    const charExps = {
         ' ': '([]+{})[!![]+!![]+!![]+!![]+!![]+!![]+!![]]',
         '\\': '([]+/\\\\/)[+!![]]',
         '0': '[]+(+[])',
@@ -25,83 +92,14 @@ function magicExpression(str) {
         's': '([]+![])[!![]+!![]+!![]]',
         't': '([]+!![])[+[]]',
         'u': '([]+!![])[!![]+!![]]'
-    }
-    let charUniCodes = []; // 保存每个字符的 Unicode 符
-    
-    // 构造 "[]['constructor']['constructor']('return '+'"'+'\\uxxxx'+'"')()" 字符串
-    let _constructor = toExp('c') + '+' +
-                       toExp('o') + '+' +
-                       toExp('n') + '+' +
-                       toExp('s') + '+' +
-                       toExp('t') + '+' +
-                       toExp('r') + '+' +
-                       toExp('u') + '+' +
-                       toExp('c') + '+' +
-                       toExp('t') + '+' +
-                       toExp('o') + '+' +
-                       toExp('r');
-    let _return = toExp('r') + '+' +
-                  toExp('e') + '+' +
-                  toExp('t') + '+' +
-                  toExp('u') + '+' +
-                  toExp('r') + '+' +
-                  toExp('n') + '+' +
-                  toExp(' ');
-    let resultHead = '[][' + _constructor + '][' +
-                             _constructor + '](' +
-                             _return + '+\'"\'+';
-    let resultBodys = [];
-    let resultFoot = '+\'"\')()';
+    };
 
-    // 输入字符串分割为单个字符，转换为 unicode 符后保存
-    for (let s of str) {
-        let hexCode = s.charCodeAt().toString(16);
-        charUniCodes.push(toUnicode(hexCode));
-    }
+    if (charExps[char]) return charExps[char];
 
-    // 分割保存的每个 Unicode 符为单个字符
-    // 并转换为魔法表达式，再拼接保存
-    charUniCodes.forEach(x => {
-        let exps = []; // 保存每个 Unicode 符的每个字符的魔法表达式
-        for (let s of x) {
-            exps.push(toExp(s));
-        }
-        resultBodys.push(exps.join('+'));
-    })
+    const hexNum = char.charCodeAt(0).toString(16);
+    const hex = toUnicode(hexNum);
 
-    return resultHead + resultBodys.join('+') + resultFoot;
-    // return resultBodys[0];
-
-    // hexCode: string
-    // 十六进制数字字符转换为正规 Unicode 符格式
-    function toUnicode(hexCode) {
-        let len = hexCode.length;
-        let unicode = '\\u';
-
-        switch (len) {
-            case 4:
-                break;
-            case 3:
-                hexCode = '0' + hexCode;
-                break;
-            case 2:
-                hexCode = '00' + hexCode;
-                break;
-            case 1:
-                hexCode = '000' + hexCode;
-                break;
-        }
-        unicode += hexCode;
-        return unicode;
-    }
-
-    // char: string
-    // 单个字符转换为魔法表达式
-    function toExp(char) {
-        if (charExps[char]) {
-            return charExps[char];
-        } else {
-            return '';
-        }
-    }
+    return hex.split('').map(function(x) {
+        return toExp(x);
+    }).join('+');
 }

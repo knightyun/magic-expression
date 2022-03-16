@@ -20,22 +20,23 @@ body {
 }
 
 .input-box {
-    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
     margin: 1rem auto 2rem;
     padding: 2rem 3rem;
     text-align: center;
     border-bottom: .2rem solid silver;
 }
-.input {
-    font-size: 1.3rem;
+.convert-input {
+    font-size: 1.2rem;
     width: 70%;
     margin: .3rem 0;
     padding: .2rem;
-    border-radius: 1rem;
+    border-radius: .6rem;
     color: teal;
-    text-align: center;
 }
-.convert {
+.convert, .encrypt {
     font-size: 1.3rem;
     width: 4.5rem;
     margin: .3rem;
@@ -44,6 +45,9 @@ body {
     border-color: aqua;
     border-radius: 1rem;
     color: white;
+}
+.encrypt {
+    width: 6rem;
 }
 
 .output-box {
@@ -115,7 +119,7 @@ body {
     .input-box {
         font-size: .5rem;
     }
-    .input, .convert {
+    .input-convert, .convert {
         font-size: 1rem;
     }
 }

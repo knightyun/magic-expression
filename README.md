@@ -1,4 +1,4 @@
-# 魔法表达式(magic-expression)转换
+# Magic Expression 转换
 
 > **尝试在线转换**：[*点我在线转换*](https://knightyun.github.io/magic-expression/)
 
