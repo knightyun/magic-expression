@@ -35,6 +35,7 @@ body {
     padding: .2rem;
     border-radius: .6rem;
     color: teal;
+    resize: vertical;
 }
 .convert, .encrypt {
     font-size: 1.3rem;
