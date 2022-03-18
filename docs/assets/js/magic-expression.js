@@ -30,7 +30,7 @@ function magicExpression(str, isJs = false) {
         toExp('n') + '+' +
         toExp(' ');
 
-    const resultBody = str.split('').map(function(s) { return toExp(s); });
+    const resultBody = str.replace(isJs ? /[\r\n]/g : '', '').split('').map(s => toExp(s));
 
     const result = '[][' + _constructor + '][' + _constructor + '](' + _return + '+\'"\'+' + resultBody.join('+') + '+\'"\')()';
     const encryptedJs = '[][' + _constructor + '][' + _constructor + '](' + result + ')()';
@@ -99,7 +99,5 @@ function toExp(char) {
     const hexNum = char.charCodeAt(0).toString(16);
     const hex = toUnicode(hexNum);
 
-    return hex.split('').map(function(x) {
-        return toExp(x);
-    }).join('+');
+    return hex.split('').map(x => toExp(x)).join('+');
 }

@@ -11,7 +11,7 @@ function startConvert(isJs = false) {
 
     if (inputText) {
         exp.innerText = magicExpression(inputText, isJs);
-        result.innerText = '"' + inputText + '"';
+        result.innerText = isJs ? inputText : '"' + inputText + '"';
     }
     convertInput.value = '';
 }
