@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -10,20 +11,31 @@
     <script src="./assets/js/magic-expression.js" defer></script>
     <script src="./assets/js/index.js" defer></script>
 </head>
+
 <body>
     <div class="main">
         <!-- Github buttons -->
         <div class="github-btns">
-            <iframe class="btn-star" src="https://ghbtns.com/github-btn.html?user=knightyun&repo=magic-expression&type=star&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
-            <iframe class="btn-fork" src="https://ghbtns.com/github-btn.html?user=knightyun&repo=magic-expression&type=fork&count=true" frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
-            <iframe class="btn-follow" src="https://ghbtns.com/github-btn.html?user=knightyun&type=follow&count=true" frameborder="0" scrolling="0" width="160px" height="20px"></iframe>
+            <iframe class="btn-star"
+                src="https://ghbtns.com/github-btn.html?user=knightyun&repo=magic-expression&type=star&count=true"
+                frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+            <iframe class="btn-fork"
+                src="https://ghbtns.com/github-btn.html?user=knightyun&repo=magic-expression&type=fork&count=true"
+                frameborder="0" scrolling="0" width="80px" height="20px"></iframe>
+            <iframe class="btn-follow" src="https://ghbtns.com/github-btn.html?user=knightyun&type=follow&count=true"
+                frameborder="0" scrolling="0" width="160px" height="20px"></iframe>
         </div>
+
         <h1 class="title">Magic Expression</h1>
         <div class="input-box">
-            <textarea rows="2" class="convert-input" placeholder="请输入期望的输出字符串(或要加密的js)"></textarea>
-            <button class="convert">转换</button>
-            <button class="encrypt">JS 加密</button>
+            <textarea rows="2" class="convert-input" placeholder="请输入要转换的字符串(或要加/解密的js)"></textarea>
+            <div class="input-btns">
+                <button class="convert">数据转换</button>
+                <button class="encrypt">JS 加密</button>
+                <button class="decrypt">JS 解密</button>
+            </div>
         </div>
+
         <div class="output-box">
             <div class="copy">复制</div>
             <div class="tip">
@@ -31,12 +43,14 @@
                 <br />
                 或者 js 代码中运行即可查看效果
             </div>
-            <pre class="expression">[][([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+{})[+!![]]+([]+[][+[]])[+!![]]+([]+![])[!![]+!![]+!![]]+([]+!![])[+[]]+([]+!![])[+!![]]+([]+!![])[!![]+!![]]+([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+!![])[+[]]+([]+{})[+!![]]+([]+!![])[+!![]]][([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+{})[+!![]]+([]+[][+[]])[+!![]]+([]+![])[!![]+!![]+!![]]+([]+!![])[+[]]+([]+!![])[+!![]]+([]+!![])[!![]+!![]]+([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+!![])[+[]]+([]+{})[+!![]]+([]+!![])[+!![]]](([]+!![])[+!![]]+([]+!![])[!![]+!![]+!![]]+([]+!![])[+[]]+([]+!![])[!![]+!![]]+([]+!![])[+!![]]+([]+[][+[]])[+!![]]+([]+{})[!![]+!![]+!![]+!![]+!![]+!![]+!![]]+'"'+([]+/\\/)[+!![]]+([]+!![])[!![]+!![]]+[]+(+[])+[]+(+[])+[]+(!![]+!![]+!![]+!![]+!![]+!![])+[]+(!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+([]+/\\/)[+!![]]+([]+!![])[!![]+!![]]+[]+(+[])+[]+(+[])+[]+(!![]+!![]+!![]+!![]+!![]+!![])+[]+(!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+([]+/\\/)[+!![]]+([]+!![])[!![]+!![]]+[]+(+[])+[]+(+[])+[]+(!![]+!![])+[]+(+!![])+'"')()</pre>
+            <pre
+                class="expression">[][([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+{})[+!![]]+([]+[][+[]])[+!![]]+([]+![])[!![]+!![]+!![]]+([]+!![])[+[]]+([]+!![])[+!![]]+([]+!![])[!![]+!![]]+([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+!![])[+[]]+([]+{})[+!![]]+([]+!![])[+!![]]][([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+{})[+!![]]+([]+[][+[]])[+!![]]+([]+![])[!![]+!![]+!![]]+([]+!![])[+[]]+([]+!![])[+!![]]+([]+!![])[!![]+!![]]+([]+{})[!![]+!![]+!![]+!![]+!![]]+([]+!![])[+[]]+([]+{})[+!![]]+([]+!![])[+!![]]](([]+!![])[+!![]]+([]+!![])[!![]+!![]+!![]]+([]+!![])[+[]]+([]+!![])[!![]+!![]]+([]+!![])[+!![]]+([]+[][+[]])[+!![]]+([]+{})[!![]+!![]+!![]+!![]+!![]+!![]+!![]]+'"'+([]+/\\/)[+!![]]+([]+!![])[!![]+!![]]+[]+(+[])+[]+(+[])+[]+(!![]+!![]+!![]+!![]+!![]+!![])+[]+(!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+([]+/\\/)[+!![]]+([]+!![])[!![]+!![]]+[]+(+[])+[]+(+[])+[]+(!![]+!![]+!![]+!![]+!![]+!![])+[]+(!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+([]+/\\/)[+!![]]+([]+!![])[!![]+!![]]+[]+(+[])+[]+(+[])+[]+(!![]+!![])+[]+(+!![])+'"')()</pre>
             <div class="result-box">
                 <span class="result-title">输出：</span>
-                <span class="result-msg">"hi!"</span>
+                <pre class="result-msg">"hi!"</pre>
             </div>
         </div>
     </div>
 </body>
+
 </html>

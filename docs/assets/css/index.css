@@ -21,10 +21,9 @@ body {
 
 .input-box {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: center;
     margin: 1rem auto 2rem;
-    padding: 2rem 3rem;
+    padding: 2rem 0;
     text-align: center;
     border-bottom: .2rem solid silver;
 }
@@ -37,18 +36,16 @@ body {
     color: teal;
     resize: vertical;
 }
-.convert, .encrypt {
-    font-size: 1.3rem;
-    width: 4.5rem;
+.input-btns button {
+    display: block;
+    font-size: 1.2rem;
+    width: 6rem;
     margin: .3rem;
     padding: .2rem;
     background: #28D988;
     border-color: aqua;
     border-radius: 1rem;
     color: white;
-}
-.encrypt {
-    width: 6rem;
 }
 
 .output-box {
@@ -97,6 +94,7 @@ body {
     float: left;
     margin: .5rem;
     padding: .2rem;
+    user-select: none;
     border-right: .2rem ridge #aaa;
     color: #011;
     background: #ddd;
@@ -104,11 +102,15 @@ body {
 .result-msg {
     float: left;
     width: calc(100% - 6rem);
+    max-height: 200px;
     margin: .5rem;
     padding: .2rem;
-    border-bottom: .1rem solid #555;
+    text-align: left;
+    font-family: consolas;
     color: #011;
     background: silver;
+    overflow: auto;
+    border-bottom: .1rem solid #555;
 }
 
 @media screen and (max-width: 540px) {
